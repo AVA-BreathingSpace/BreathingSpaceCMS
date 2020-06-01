@@ -1,0 +1,33 @@
+# Merging upstream repo
+
+name: Merge upstream branches
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  schedule:
+    - cron: '*/1 * * * *'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  merge:
+   runs-on: ubuntu-latest
+   steps:
+     - uses: actions/checkout@v2
+     - name: Merge upstream
+       run: |
+         git config --global user.name 'AVA-BreathingSpace'
+         git config --global user.email 'ava-breathingspace@users.noreply.github.com'
+         git pull --unshallow
+         
+         git remote add upstream https://github.com/AVA-BreathingSpace/BreathingSpace.git
+         git fetch upstream 
+         
+         git checkout -b staging
+         git merge --no-edit upstream/staging
+         git push origin staging
+         
+         git checkout master
+         git merge --no-edit upstream/master
+         git push origin master
+
