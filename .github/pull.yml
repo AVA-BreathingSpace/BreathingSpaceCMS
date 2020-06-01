@@ -1,0 +1,8 @@
+version: "1"
+rules:
+  - base: master
+    upstream: AVA-BreathingSpace:master
+    mergeMethod: hardreset
+  - base: staging
+    upstream: AVA-BreathingSpace:staging
+    mergeMethod: hardreset
