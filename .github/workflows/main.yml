@@ -24,13 +24,13 @@ jobs:
          git remote add upstream https://github.com/AVA-BreathingSpace/BreathingSpace.git
          git fetch upstream 
          
-         git checkout staging
+         git checkout -b staging
          git merge --no-edit upstream/staging
-         git push origin staging
+         git push origin staging --force
          
          git checkout master
          git merge --no-edit upstream/master
-         git push origin master
+         git push origin master --force
               
      - name: Print time
        run: echo 'Merge upstream triggered at ${{ steps.merge-upstream.outputs.time }}.'
