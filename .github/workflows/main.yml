@@ -24,7 +24,7 @@ jobs:
          git remote add upstream https://github.com/AVA-BreathingSpace/BreathingSpace.git
          git fetch upstream 
          
-         git checkout -b staging
+         git checkout staging
          git merge --no-edit upstream/staging
          git push origin staging
          
