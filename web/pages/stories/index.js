@@ -5,7 +5,7 @@ const StoriesStyled = styled.section.attrs({
 })``
 
 const Stories = () => {
-  return <StoriesStyled>Some stories are here</StoriesStyled>
+  return <StoriesStyled>MORE STORIES</StoriesStyled>
 }
 
 export default Stories
