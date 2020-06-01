@@ -6,7 +6,7 @@ name: Merge upstream branches
 # events but only for the master branch
 on:
   schedule:
-    - cron: '*/1 * * * *'
+    - cron: '*/5 * * * *'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -15,6 +15,7 @@ jobs:
    steps:
      - uses: actions/checkout@v2
      - name: Merge upstream
+       id: merge-upstream
        run: |
          git config --global user.name 'AVA-BreathingSpace'
          git config --global user.email 'ava-breathingspace@users.noreply.github.com'
@@ -30,4 +31,6 @@ jobs:
          git checkout master
          git merge --no-edit upstream/master
          git push origin master
-
+              
+     - name: Print time
+       run: echo 'Merge upstream triggered at ${{ steps.merge-upstream.outputs.time }}.'
